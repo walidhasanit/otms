@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminTeacherController;
 use App\Http\Controllers\TeacherAuthController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\AdminCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/edit/teacher/{id}', [AdminTeacherController::class, 'edit'])->name('edit.teacher');
     Route::post('/update/teacher/{id}', [AdminTeacherController::class, 'update'])->name('update.teacher');
     Route::get('/delete/teacher/{id}', [AdminTeacherController::class, 'delete'])->name('delete.teacher');
+
+    Route::get('admin/mange/course', [AdminCourseController::class, 'index'])->name('admin.manage-course');
+    Route::get('admin/course/detail', [AdminCourseController::class, 'detail'])->name('admin.course-detail');
+    Route::get('admin/course/status', [AdminCourseController::class, 'courseStatus'])->name('admin.course-status');
+    Route::get('admin/course/offer-status', [AdminCourseController::class, 'courseOfferStatus'])->name('admin.course-offer-status');
+    Route::get('admin/course/delete', [AdminCourseController::class, 'delete'])->name('admin.course-delete');
 
 });
